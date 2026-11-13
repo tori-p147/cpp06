@@ -4,7 +4,6 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
-#include <cstdint>
 #include <cfloat>
 #include <cctype>
 
