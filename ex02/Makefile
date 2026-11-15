@@ -9,6 +9,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDES = -I$(INC_DIR)
 
 SRC_FILES = main.cpp \
+		A.cpp \
+		B.cpp \
 		C.cpp \
 		Base.cpp
 		
