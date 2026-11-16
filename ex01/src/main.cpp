@@ -14,4 +14,4 @@ int main()
     std::cout << "Deserialized data object name: " << deserialized_data->name << std::endl;
     std::cout << "Deserialized data object value: " << deserialized_data->value << std::endl;
     return 0;
-};
+}

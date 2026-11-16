@@ -1,11 +1,13 @@
 #ifndef SCALAR_HPP
 #define SCALAR_HPP
 
+#include <stdlib.h>
 #include <iostream>
 #include <iomanip>
 #include <limits>
 #include <cfloat>
 #include <cctype>
+#include <climits>
 
 class ScalarConverter
 {
@@ -22,18 +24,19 @@ public:
 			std::cout << "double: " << "Non displayable" << std::endl;
 			return;
 		}
-		double d = std::stod(src);
+		char* end;
+		double d = std::strtod(src.c_str(), &end);
 		bool isPseudoLiteral = (d == std::numeric_limits<double>::infinity() 
 			|| d == -std::numeric_limits<double>::infinity()
 			|| d != d);
-		if (isPseudoLiteral)
+		if (isPseudoLiteral || d < -DBL_MAX || d > DBL_MAX)
 			std::cout << "char: " << "impossible" << std::endl;
 		else if (std::isdigit(src[0]))
 			std::cout << "char: " << "Non displayable" << std::endl;
 		else
 			std::cout << "char: " << "'*'" << std::endl;
 
-		if (isPseudoLiteral || d < INT32_MIN || INT32_MAX < d)
+		if (isPseudoLiteral || d < INT_MIN || INT_MAX < d)
 			std::cout << "int: " << "impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(d) << std::endl;
